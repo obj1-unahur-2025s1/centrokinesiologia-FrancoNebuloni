@@ -13,4 +13,83 @@ describe "Tests 1" {
     Leo.usar(magneto)
     assert.equals(9, Leo.nivDolor())
   }
+  test "Milena usa magneto y su dolor se reduce a 27" {
+    Milena.usar(magneto)
+    assert.equals(27, Milena.nivDolor())
+  }
+  test "Leo hace cosas y sufre" {
+    Leo.usar(bicicleta)
+    assert.equals(6, Leo.nivDolor())
+    assert.equals(23, Leo.nivMuscular())
+  }
+  test "Leo usa minitramp" {
+    Leo.usar(minitramp)
+    assert.equals(24, Leo.nivMuscular())
+  }
+}
+
+describe "Tests 2" {
+  const Leo = new Pacientes(edad = 40, nivDolor = 10, nivMuscular = 20)
+  const Milena = new Pacientes(edad = 3, nivDolor = 30, nivMuscular = 50)
+
+  method initialize() {
+    Leo.agregarAparatoAsignado(bicicleta)
+    Leo.agregarAparatoAsignado(minitramp)
+    Leo.agregarAparatoAsignado(bicicleta)
+    Leo.agregarAparatoAsignado(magneto)
+
+    Milena.agregarAparatoAsignado(magneto)
+    Milena.agregarAparatoAsignado(bicicleta)
+  }
+
+  test "Leo puede hacer su rutina y cosas pasan" {
+    assert.that(Leo.puedeRealizarRutina())
+    Leo.realizarRutina()
+    assert.equals(1.8, Leo.nivDolor())
+    assert.equals(30, Leo.nivMuscular())
+  }
+
+  test "Milena es una inútil" {
+    assert.notThat(Milena.puedeRealizarRutina())
+  }
+}
+
+describe "tests 3" {
+  const nico = new Resistente(edad = 40, nivDolor = 10, nivMuscular = 20)
+  const victoria = new Caprichoso(edad = 30, nivDolor = 10, nivMuscular = 40)
+  const julian = new Caprichoso(edad = 20, nivDolor = 54, nivMuscular = 50)
+  const zoe = new RapidaRecuperacion(edad = 50, nivDolor = 14, nivMuscular = 40)
+  const biciRoja = new Bicicleta(color="Roja")
+  const magnetoVerde = new Magneto(color="Verde")
+  const biciBlanca = new Bicicleta(color="Blanca")
+  
+  method initialize() {
+    nico.agregarAparatoAsignado(bicicleta)
+    nico.agregarAparatoAsignado(minitramp)
+    nico.agregarAparatoAsignado(bicicleta)
+    nico.agregarAparatoAsignado(magneto)
+
+    victoria.agregarAparatoAsignado(bicicleta)
+    victoria.agregarAparatoAsignado(minitramp)
+    victoria.agregarAparatoAsignado(bicicleta)
+    victoria.agregarAparatoAsignado(magneto)
+
+    julian.agregarAparatoAsignado(biciRoja)
+    julian.agregarAparatoAsignado(magnetoVerde)
+    julian.agregarAparatoAsignado(biciBlanca)
+
+    zoe.agregarAparatoAsignado(bicicleta)
+    zoe.agregarAparatoAsignado(minitramp)
+    zoe.agregarAparatoAsignado(bicicleta)
+    zoe.agregarAparatoAsignado(magneto)
+  }
+  test "Nico puede hacer su rutina" {
+    assert.that(nico.puedeRealizarRutina())
+    nico.realizarRutina()
+    assert.equals(1.8, nico.nivDolor())
+    assert.equals(34, nico.nivMuscular())
+  }
+  test "description" {
+    
+  }
 }
