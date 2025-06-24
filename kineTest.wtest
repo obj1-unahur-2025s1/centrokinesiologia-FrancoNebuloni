@@ -1,0 +1,16 @@
+import kinesiologia.*
+
+describe "Tests 1" {
+  const Leo = new Pacientes(edad = 40, nivDolor = 10, nivMuscular = 20)
+  const Milena = new Pacientes(edad = 3, nivDolor = 30, nivMuscular = 50)
+  
+  test "Leo puede usar 3 aparatos" {
+    assert.that(Leo.puedeUsar(magneto))
+    assert.that(Leo.puedeUsar(bicicleta))
+    assert.that(Leo.puedeUsar(minitramp))
+  }
+  test "El dolor de Leo reduce a 9" {
+    Leo.usar(magneto)
+    assert.equals(9, Leo.nivDolor())
+  }
+}
